@@ -54,6 +54,8 @@ minetest.after(0, function()
 	end
 end)
 
+local step = math.ceil(64/9*2)/2
+
 minetest.register_node("ash:dirt_with_ash", {
 	description = "Dirt with Ash",
 	tiles = {"ash_ash.png", "default_dirt.png",
@@ -72,7 +74,7 @@ minetest.register_node("ash:ash", {
 	paramtype2 = "leveled",
 	buildable_to = true,
 	floodable = true,
-	leveled = 8,
+	leveled = step,
 	drawtype = "nodebox",
 	node_box = {
 		type = "leveled",
@@ -95,7 +97,7 @@ minetest.register_node("ash:ash", {
 				creative.is_enabled_for(digger:get_player_name()) then
 			return
 		end
-		local remaining = ItemStack("ash:ash "..tostring(level/8-1))
+		local remaining = ItemStack("ash:ash "..tostring(level/step-1))
 		if not remaining:is_empty() then
 			core.handle_node_drops(pos, {remaining}, digger)
 		end
@@ -131,7 +133,7 @@ minetest.register_node("ash:ash", {
 		end
 		-- Increase the level.
 		local level = minetest.get_node_level(place_to)
-		level = level + 8
+		level = level + step
 		if level >= 64 then
 			minetest.swap_node(place_to, {name = "ash:ashblock"})
 		else
@@ -159,6 +161,22 @@ minetest.register_abm({
 	interval = 6,
 	chance = 50,
 	action = ash.ash_onto_node,
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "ash:ash 9",
+	recipe = {"ash:ashblock"},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "ash:ashblock",
+	recipe = {
+		"ash:ash", "ash:ash", "ash:ash",
+		"ash:ash", "ash:ash", "ash:ash",
+		"ash:ash", "ash:ash", "ash:ash",
+	},
 })
 
 
