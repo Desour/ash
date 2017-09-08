@@ -1,6 +1,6 @@
-#Ash
+# Ash
 
-![screenshot](https://raw.githubusercontent.com/DS-Minetest/ash/master/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/DS-Minetest/ash/master/screenshot.png)  
 This mod adds ash when fire burns something.  
 
 

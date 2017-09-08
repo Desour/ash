@@ -88,10 +88,14 @@ minetest.register_node("ash:ash", {
 	on_dig = function(pos, node, digger)
 		local level = minetest.get_node_level(pos)
 		minetest.node_dig(pos, node, digger)
-		if minetest.get_node(pos).name == node.name then
+		if minetest.get_node(pos).name == node.name or
+				not digger or
+				not digger:is_player() or
+				creative_exists and
+				creative.is_enabled_for(digger:get_player_name()) then
 			return
 		end
-		local remaining = ItemStack("ash:ash "..tostring(level/7-1))
+		local remaining = ItemStack("ash:ash "..tostring(level/8-1))
 		if not remaining:is_empty() then
 			core.handle_node_drops(pos, {remaining}, digger)
 		end
