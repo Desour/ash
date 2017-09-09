@@ -1,1 +1,21 @@
+ash_ash.png:
+by TumeniNodes
+CC-by-sa 4.0
+
+ash_sided.png:
+by TumeniNodes, modified by DS-minetest
+CC-by-sa 4.0
+
+Everything else:
+by DS-minetest
 CC0 / WTFPL
+
+
+CC-by-sa 4.0:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+CC0:
+https://creativecommons.org/publicdomain/zero/1.0/
+
+WTFPL:
+http://www.wtfpl.net/
