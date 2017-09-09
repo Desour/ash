@@ -49,7 +49,7 @@ end
 minetest.after(0, function()
 	for name, def in pairs(minetest.registered_nodes) do
 		if def.groups.flammable and not def.on_burn then
-			minetest.override_item(name, {on_burn = ash.burn_node})
+			rawset(minetest.registered_nodes[name], "on_burn", ash.burn_node)
 		end
 	end
 end)
