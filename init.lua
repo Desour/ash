@@ -54,7 +54,7 @@ minetest.after(0, function()
 	end
 end)
 
-local step = math.ceil(64/9*2)/2
+local step = 64 / 16 * 2 -- 2 pixels
 
 minetest.register_node("ash:dirt_with_ash", {
 	description = "Dirt with Ash",
@@ -74,7 +74,8 @@ minetest.register_node("ash:ash", {
 	paramtype2 = "leveled",
 	buildable_to = true,
 	floodable = true,
-	leveled = step,
+	place_param2 = step,
+	leveled = step, -- needed for falling nodes to stack (see minetest#8307)
 	drawtype = "nodebox",
 	node_box = {
 		type = "leveled",
